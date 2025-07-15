@@ -28,8 +28,8 @@ const Signin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-50">
-      <div className="w-full max-w-sm p-8 space-y-6 bg-white rounded-lg shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="w-full max-w-sm p-6 space-y-4 bg-white rounded-xl shadow-lg">
         <div className="text-center">
           <div className="flex justify-center mb-4">
             <img
@@ -41,40 +41,59 @@ const Signin = () => {
           <h2 className="text-2xl font-bold text-gray-900">
             Welcome Back
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Please enter your email and password to log in.
+          <p className="mt-1 text-sm text-gray-600">
+            Please enter your details to sign in.
           </p>
         </div>
         <form onSubmit={handleSignIn} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
+          {/* Email Input */}
+          <div className="relative">
             <input
               onChange={(e) => setEmail(e.target.value)}
               id="email"
               name="email"
               type="email"
-              autoComplete="email"
+              className="peer w-full p-3 pt-5 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-neutral-300 focus:border-blue-500"
+              placeholder=" "
               required
-              className="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Email"
+              autoComplete="email"
             />
-          </div>
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
+            <label
+              htmlFor="email"
+              className="absolute text-sm duration-150 transform -translate-y-3 top-4 z-10 origin-[0] left-4
+                         peer-placeholder-shown:scale-100
+                         peer-placeholder-shown:translate-y-0
+                         peer-focus:scale-75
+                         peer-focus:-translate-y-4
+                         text-zinc-400"
+            >
+              Email
             </label>
+          </div>
+
+          {/* Password Input */}
+          <div className="relative">
             <input
               onChange={(e) => setPassword(e.target.value)}
               id="password"
               name="password"
               type="password"
-              autoComplete="current-password"
+              className="peer w-full p-3 pt-5 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-neutral-300 focus:border-blue-500"
+              placeholder=" "
               required
-              className="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Password"
+              autoComplete="current-password"
             />
+            <label
+              htmlFor="password"
+              className="absolute text-sm duration-150 transform -translate-y-3 top-4 z-10 origin-[0] left-4
+                         peer-placeholder-shown:scale-100
+                         peer-placeholder-shown:translate-y-0
+                         peer-focus:scale-75
+                         peer-focus:-translate-y-4
+                         text-zinc-400"
+            >
+              Password
+            </label>
           </div>
 
           <div>
@@ -82,24 +101,12 @@ const Signin = () => {
               type="submit"
               className="w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-              Continue
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              Sign In
             </button>
           </div>
-          {error && <p className="text-red-600 text-center pt-2">{error}</p>}
+          {error && <p className="text-red-600 text-center text-xs pt-1">{error}</p>}
         </form>
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-xs text-gray-600">
           Don't have an account yet?{" "}
           <Link
             to="/signup"
