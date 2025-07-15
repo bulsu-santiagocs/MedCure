@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 // A helper component to manage the active state of icons and text
-const SidebarLink = ({ to, icon: Icon, text, children }) => {
+const SidebarLink = ({ to = null, icon: Icon = null, text, children }) => {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const hasSubMenu = children != null;
 
@@ -33,7 +33,7 @@ const SidebarLink = ({ to, icon: Icon, text, children }) => {
           onClick={() => setSubMenuOpen(!isSubMenuOpen)}
         >
           <div className="flex items-center">
-            {/* FIX: Conditionally render Icon only if it exists */}
+            {/* Conditionally render Icon only if it exists */}
             {Icon && <Icon size={20} className={iconClasses(false)} />}
             <span className={Icon ? 'ml-3 font-medium' : 'font-medium'}>{text}</span>
           </div>
