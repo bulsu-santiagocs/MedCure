@@ -1,33 +1,26 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
+import React, { useState } from 'react';
+import Header from '../components/layout/Header';
+import Sidebar from '../components/layout/Sidebar';
 
 const Dashboard = () => {
-  const { session, signOut } = UserAuth();
-  const navigate = useNavigate();
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
 
-  const handleSignOut = async (e) => {
-    e.preventDefault();
-
-    try {
-      await signOut();
-      navigate("/");
-    } catch (err) {
-      setError("An unexpected error occurred."); // Catch unexpected errors
-    }
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
   };
-  console.log(session);
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <h2>Welcome, {session?.user?.email}</h2>
-      <div>
-        <p
-          onClick={handleSignOut}
-          className="hover:cursor-pointer  border inline-block px-4 py-3 mt-4 "
-        >
-          Sign out
-        </p>
+    <div className="flex h-screen bg-main-bg">
+      <Sidebar isOpen={isSidebarOpen} />
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <Header toggleSidebar={toggleSidebar} />
+        <main className="flex-1 overflow-x-hidden overflow-y-auto p-6">
+          <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+          <p className="mt-2 text-gray-600">
+            Welcome to your new dashboard!
+          </p>
+          {/* Main content goes here */}
+        </main>
       </div>
     </div>
   );
