@@ -33,8 +33,9 @@ const SidebarLink = ({ to, icon: Icon, text, children }) => {
           onClick={() => setSubMenuOpen(!isSubMenuOpen)}
         >
           <div className="flex items-center">
-            <Icon size={20} className={iconClasses(false)} />
-            <span className="ml-3 font-medium">{text}</span>
+            {/* FIX: Conditionally render Icon only if it exists */}
+            {Icon && <Icon size={20} className={iconClasses(false)} />}
+            <span className={Icon ? 'ml-3 font-medium' : 'font-medium'}>{text}</span>
           </div>
           <ChevronDown
             size={16}
@@ -47,12 +48,14 @@ const SidebarLink = ({ to, icon: Icon, text, children }) => {
   }
 
   return (
-    <NavLink to={to}>
+    // FIX: Added 'end' prop to ensure only the exact path is matched as active
+    <NavLink to={to} end>
       {({ isActive }) => (
         <div className={linkClasses(isActive)}>
           <div className="flex items-center">
-            <Icon size={20} className={iconClasses(isActive)} />
-            <span className="ml-3 font-medium">{text}</span>
+            {/* FIX: Conditionally render Icon only if it exists */}
+            {Icon && <Icon size={20} className={iconClasses(isActive)} />}
+            <span className={Icon ? 'ml-3 font-medium' : 'font-medium'}>{text}</span>
           </div>
         </div>
       )}
@@ -74,22 +77,23 @@ const Sidebar = ({ isOpen }) => {
                 <img src="/logo.png" alt="Logo" className="w-8 h-8" />
             </div>
         </div>
+        {/* FIX: Corrected all 'to' paths to be nested under /dashboard */}
         <nav className="flex-1 px-2 py-4">
           <SidebarLink icon={LayoutDashboard} text="Dashboard" to="/dashboard" />
           <SidebarLink icon={Briefcase} text="Management">
-            <SidebarLink text="Users" to="/management/users" />
-            <SidebarLink text="Products" to="/management/products" />
+            <SidebarLink text="Users" to="/dashboard/management/users" />
+            <SidebarLink text="Products" to="/dashboard/management/products" />
           </SidebarLink>
           <SidebarLink icon={Bell} text="Notification">
-             <SidebarLink text="All" to="/notifications/all" />
-             <SidebarLink text="Unread" to="/notifications/unread" />
+             <SidebarLink text="All" to="/dashboard/notifications/all" />
+             <SidebarLink text="Unread" to="/dashboard/notifications/unread" />
           </SidebarLink>
           <SidebarLink icon={ShoppingCart} text="Point Of Sales">
-             <SidebarLink text="New Sale" to="/pos/new" />
-             <SidebarLink text="History" to="/pos/history" />
+             <SidebarLink text="New Sale" to="/dashboard/pos/new" />
+             <SidebarLink text="History" to="/dashboard/pos/history" />
           </SidebarLink>
-          <SidebarLink icon={Users} text="Contacts" to="/contacts" />
-          <SidebarLink icon={Settings} text="Settings" to="/settings" />
+          <SidebarLink icon={Users} text="Contacts" to="/dashboard/contacts" />
+          <SidebarLink icon={Settings} text="Settings" to="/dashboard/settings" />
         </nav>
       </div>
     </aside>
