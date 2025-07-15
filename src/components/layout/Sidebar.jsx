@@ -74,7 +74,7 @@ const Sidebar = ({ isOpen }) => {
       <div className="flex flex-col h-full">
          <div className="flex items-center justify-center h-16 border-b border-gray-200 flex-shrink-0">
             <div className="flex items-center justify-center w-full">
-                <img src="/logo.png" alt="Logo" className="w-20 h-20" />
+                <img src="/logo.png" alt="Logo" className="w-15 h-12" />
             </div>
         </div>
         {/* FIX: Corrected all 'to' paths to be nested under /dashboard */}

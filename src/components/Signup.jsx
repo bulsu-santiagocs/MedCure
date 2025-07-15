@@ -38,7 +38,7 @@ const Signup = () => {
             <img
               src="/logo.png"
               alt="Company Logo"
-              className="w-24 h-24 rounded-full"
+              className="w-15 h-10 rounded-full"
             />
           </div>
           <h2 className="text-2xl font-bold text-gray-900">
