@@ -30,9 +30,9 @@ const Header = ({ toggleSidebar }) => {
           {/* Menu Toggle */}
           <button
             onClick={toggleSidebar}
-            className="p-2 rounded-md hover:bg-gray-100 focus:outline-none"
+            className="p-2 rounded-md bg-gray-100 hover:bg-gray-200 ring-1 ring-gray-300 focus:outline-none"
           >
-            <Menu size={20} className="text-gray-600"/>
+            <Menu size={20} className="text-gray-500"/>
           </button>
           {/* Search */}
           <div className="relative">
@@ -50,15 +50,15 @@ const Header = ({ toggleSidebar }) => {
 
         {/* Right side icons with reverted styling */}
         <div className="flex items-center space-x-4">
-          <button className="p-2 rounded-full hover:bg-gray-200">
-            <MessageSquare size={24} className="text-gray-600" />
+          <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 ring-1 ring-gray-300">
+            <MessageSquare size={24} className="text-gray-500" />
           </button>
-          <button className="p-2 rounded-full hover:bg-gray-200">
-            <HelpCircle size={24} className="text-gray-600" />
+          <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 ring-1 ring-gray-300">
+            <HelpCircle size={24} className="text-gray-500" />
           </button>
           <div className="relative group">
-            <button className="p-2 rounded-full hover:bg-gray-200">
-              <UserCircle size={24} className="text-gray-600" />
+            <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 ring-1 ring-gray-300">
+              <UserCircle size={24} className="text-gray-500" />
             </button>
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <div className="px-4 py-2 text-sm text-gray-700">
