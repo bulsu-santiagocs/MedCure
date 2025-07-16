@@ -4,7 +4,7 @@ import { supabase } from "../supabaseClient";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [session, setSession] = useState(undefined);
+  const [session, setSession] = useState(null);
 
   // Sign up
   const signUpNewUser = async (email, password) => {
@@ -23,26 +23,18 @@ export const AuthContextProvider = ({ children }) => {
 
   // Sign in
   const signInUser = async (email, password) => {
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.toLowerCase(),
-        password: password,
-      });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.toLowerCase(),
+      password: password,
+    });
 
-      if (error) {
-        console.error("Sign-in error:", error.message);
-        return { success: false, error: error.message };
-      }
-
-      console.log("Sign-in success:", data);
-      return { success: true, data };
-    } catch (error) {
-      console.error("Unexpected error during sign-in:", error.message);
-      return {
-        success: false,
-        error: "An unexpected error occurred. Please try again.",
-      };
+    if (error) {
+      console.error("Sign-in error:", error.message);
+      return { success: false, error: error.message };
     }
+
+    console.log("Sign-in success:", data);
+    return { success: true, data };
   };
 
   useEffect(() => {

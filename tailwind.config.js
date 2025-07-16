@@ -13,6 +13,9 @@ export default {
         'sidebar-item-hover-bg': '#F3F4F6', // Gray-100
         'header-bg': '#FFFFFF',
         'main-bg': '#F9FAFB', // Very light gray, almost white
+        'gray-100': '#F3F4F6',
+        'gray-200': '#E5E7EB',
+        'gray-300': '#D1D5DB',
       },
     },
   },

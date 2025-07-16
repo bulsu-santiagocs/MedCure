@@ -19,7 +19,7 @@ const Signin = () => {
 
       // Set a timeout to clear the error message after a specific duration (e.g., 3 seconds)
       setTimeout(() => {
-        setError("");
+        setError(null);
       }, 3000); // 3000 milliseconds = 3 seconds
     } else {
       // Redirect or perform any necessary actions after successful sign-in
